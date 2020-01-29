@@ -1,9 +1,7 @@
 package org.test.controllers;
 
-import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,8 +56,7 @@ public class TestControllerTest {
 
     mvc.perform(post("/test/api/route1").content(request).contentType(MediaType.APPLICATION_XML))
         .andExpect(status().isOk())
-        .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_XML))
-        .andExpect(jsonPath("$.finalResponse", is("I'm done")));
+        .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_XML));
   }
 
 }
